@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Phusion <info@phusion.nl>
+FROM debian:jessie
+MAINTAINER Emanuele Peruffo <info@emanueleperuffo.com>
 
 ENV HOME /root
 ADD . /build
