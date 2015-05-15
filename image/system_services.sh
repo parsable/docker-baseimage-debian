@@ -16,6 +16,9 @@ chown :docker_env /etc/container_environment.sh /etc/container_environment.json
 chmod 640 /etc/container_environment.sh /etc/container_environment.json
 ln -s /etc/container_environment.sh /etc/profile.d/
 
+## Install python3 for my_init
+$minimal_apt_get_install python3
+
 ## Install runit.
 $minimal_apt_get_install runit
 
