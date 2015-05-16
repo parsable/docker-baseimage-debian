@@ -22,8 +22,8 @@ $minimal_apt_get_install python3
 ## Install runit.
 $minimal_apt_get_install runit
 
-## Install rsyslog
-$minimal_apt_get_install rsyslog
+## Install rsyslog and the with RELP protocol library, useful to send syslog events to a syslog server
+$minimal_apt_get_install rsyslog librelp0
 mkdir /etc/service/rsyslog
 cp /build/runit/rsyslog /etc/service/rsyslog/run
 # Disable kernel error logs since we're in a docker container
