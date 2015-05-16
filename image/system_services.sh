@@ -28,7 +28,6 @@ mkdir /etc/service/rsyslog
 cp /build/runit/rsyslog /etc/service/rsyslog/run
 # Disable kernel error logs since we're in a docker container
 sed -i 's/^$ModLoad imklog/#$ModLoad imklog/' /etc/rsyslog.conf
-cp /build/config/rsyslog.d/*.conf /etc/rsyslog.d/
 
 ## Install syslog to "docker logs" forwarder.
 mkdir /etc/service/syslog-forwarder
