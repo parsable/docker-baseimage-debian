@@ -23,7 +23,7 @@ $minimal_apt_get_install python3
 $minimal_apt_get_install runit
 
 ## Install rsyslog and the with RELP protocol library, useful to send syslog events to a syslog server
-$minimal_apt_get_install rsyslog librelp0
+$minimal_apt_get_install rsyslog rsyslog-relp
 mkdir /etc/service/rsyslog
 cp /build/runit/rsyslog /etc/service/rsyslog/run
 # Disable kernel error logs since we're in a docker container
@@ -35,7 +35,7 @@ cp /build/runit/syslog-forwarder /etc/service/syslog-forwarder/run
 
 ## Install logrotate.
 $minimal_apt_get_install logrotate
-cp /build/config/logrotate.d /etc/logrotate.d/*
+cp /build/config/logrotate.d/* /etc/logrotate.d/
 
 ## Install cron daemon.
 $minimal_apt_get_install cron
