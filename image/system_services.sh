@@ -22,12 +22,17 @@ $minimal_apt_get_install python3
 ## Install runit.
 $minimal_apt_get_install runit
 
-## Install rsyslog and the with RELP protocol library, useful to send syslog events to a syslog server
-$minimal_apt_get_install rsyslog rsyslog-relp
-mkdir /etc/service/rsyslog
-cp /build/runit/rsyslog /etc/service/rsyslog/run
-# Disable kernel error logs since we're in a docker container
-sed -i 's/^$ModLoad imklog/#$ModLoad imklog/' /etc/rsyslog.conf
+## Install a syslog daemon.
+$minimal_apt_get_install syslog-ng-core
+mkdir /etc/service/syslog-ng
+cp /build/runit/syslog-ng /etc/service/syslog-ng/run
+mkdir -p /var/lib/syslog-ng
+cp /build/config/default/syslog-ng /etc/default/syslog-ng
+touch /var/log/syslog
+chmod u=rw,g=r,o= /var/log/syslog
+# Replace the system() source because inside Docker we
+# can't access /proc/kmsg.
+sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng/syslog-ng.conf
 
 ## Install syslog to "docker logs" forwarder.
 mkdir /etc/service/syslog-forwarder

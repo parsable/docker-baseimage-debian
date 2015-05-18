@@ -7,7 +7,7 @@
 	delaycompress
 	compress
 	postrotate
-		sv reload rsyslog > /dev/null
+		sv reload syslog-ng > /dev/null
 	endscript
 }
 
@@ -32,7 +32,7 @@
 	delaycompress
 	sharedscripts
 	postrotate
-		sv reload rsyslog > /dev/null
+		sv reload syslog-ng > /dev/null
 		sv restart cron-log-forwarder > /dev/null
 	endscript
 }
