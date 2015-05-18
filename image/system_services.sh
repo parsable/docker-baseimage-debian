@@ -35,7 +35,7 @@ cp /build/runit/syslog-forwarder /etc/service/syslog-forwarder/run
 
 ## Install logrotate.
 $minimal_apt_get_install logrotate
-cp /build/config/logrotate_rsyslog /etc/logrotate.d/rsyslog
+cp /build/config/logrotate.d /etc/logrotate.d/*
 
 ## Install cron daemon.
 $minimal_apt_get_install cron
