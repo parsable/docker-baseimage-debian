@@ -42,6 +42,12 @@ localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 echo -n en_US.UTF-8 > /etc/container_environment/LANG
 echo -n en_US.UTF-8 > /etc/container_environment/LC_CTYPE
 
-chmod +x /build/bin/*
-chmod +x /build/runit/*
+if [ -d /build/runit ]; then
+	chmod +x /build/runit/*
+fi
+
+if [ -d /build/bin ]; then
+	chmod +x /build/bin/*
+fi
+
 chmod +x /build/*.sh
